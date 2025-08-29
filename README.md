@@ -38,4 +38,52 @@ El proyecto está dividido en dos carpetas principales:
 
 ### **Base de Datos**
 - **MySQL** (usando **XAMPP**)
+  
+### **Configurar**
+
+- **Configurar la base de datos en XAMPP**
+
+  - Abre phpMyAdmin desde http://localhost/phpmyadmin.
+
+  - Crea una nueva base de datos:
+
+    - CREATE DATABASE nombreBaseDatos;
+      
+  - Importa el script SQL.
+  - Configura tu usuario y contraseña de MySQL en el archivo ConexionBD.java:
+    - Por ejemplo:
+      - private static final String URL = "jdbc:mysql://localhost:3306/semmp_db";
+      - private static final String USER = "root";
+      - private static final String PASSWORD = "";
+
+- **Ejecutar el backend en NetBeans**
+
+  - Abre NetBeans y selecciona Abrir proyecto existente.
+
+  - Ve a la carpeta backend/ y selecciona el proyecto.
+
+  - Configura tu Tomcat:
+    - Servidor: Apache Tomcat 9+
+    - URL base: http://localhost:8080
+
+  - Ejecuta el proyecto.
+
+- **Ejecutar el frontend en Visual Studio Code**
+
+  - Abre la carpeta frontend/ selecciona el proyecto y abrirlo en VS Code.
+
+  - Instala la extensión Live Server.
+
+  - Haz clic derecho en index.html y selecciona "Open with Live Server".
+
+### Conexión entre Frontend y Backend
+
+- Para permitir que el frontend y el backend trabajen juntos desde orígenes diferentes, se añadieron encabezados CORS en los Servlets.
+  
+  - Ejemplo en LoginServlet.java:
+    
+    - response.setHeader("Access-Control-Allow-Origin", "*");
+    - response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+    - response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization");
+    - response.setHeader("Access-Control-Allow-Credentials", "true");
 
